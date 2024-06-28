@@ -9,7 +9,7 @@ results/
 *.pdf
 outputs/
 results
-
+sols/
 # C extensions
 *.so
 results.ipynb
