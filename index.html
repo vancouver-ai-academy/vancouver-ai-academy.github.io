@@ -1,1 +1,131 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Choice Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            display: flex;
+            max-width: 1000px;
+            margin: auto;
+        }
+        .left-side {
+            flex: 1;
+            padding-right: 20px;
+        }
+        .quiz-container {
+            flex: 2;
+        }
+        .question {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .choices {
+            list-style-type: none;
+            padding: 0;
+        }
+        .choices li {
+            margin-bottom: 10px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-side">
+            <h2>Quiz Information</h2>
+            <p>This quiz tests your knowledge on various topics. Read each question carefully and select the best answer. Good luck!</p>
+        </div>
+        <div class="quiz-container">
+            <div id="quiz"></div>
+            <button id="submit">Submit</button>
+            <div id="result" class="result"></div>
+        </div>
+    </div>
+
+    <script>
+        const quizData = [
+            {
+                question: "What is the capital of France?",
+                choices: ["Berlin", "Madrid", "Paris", "Lisbon"],
+                answer: "Paris"
+            },
+            {
+                question: "Who wrote 'To Kill a Mockingbird'?",
+                choices: ["Harper Lee", "J.K. Rowling", "Ernest Hemingway", "Mark Twain"],
+                answer: "Harper Lee"
+            },
+            {
+                question: "What is the smallest planet in our solar system?",
+                choices: ["Venus", "Earth", "Mars", "Mercury"],
+                answer: "Mercury"
+            }
+        ];
+
+        const quizContainer = document.getElementById('quiz');
+        const resultContainer = document.getElementById('result');
+        const submitButton = document.getElementById('submit');
+
+        function loadQuiz() {
+            quizContainer.innerHTML = '';
+            quizData.forEach((q, index) => {
+                const questionElement = document.createElement('div');
+                questionElement.classList.add('question');
+                questionElement.innerText = `${index + 1}. ${q.question}`;
+
+                const choicesElement = document.createElement('ul');
+                choicesElement.classList.add('choices');
+
+                q.choices.forEach(choice => {
+                    const choiceElement = document.createElement('li');
+                    choiceElement.innerHTML = `
+                        <label>
+                            <input type="radio" name="question${index}" value="${choice}">
+                            ${choice}
+                        </label>
+                    `;
+                    choicesElement.appendChild(choiceElement);
+                });
+
+                quizContainer.appendChild(questionElement);
+                quizContainer.appendChild(choicesElement);
+            });
+        }
+
+        function getSelectedAnswers() {
+            const answers = [];
+            quizData.forEach((q, index) => {
+                const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
+                answers.push(selectedOption ? selectedOption.value : null);
+            });
+            return answers;
+        }
+
+        function showResult() {
+            const answers = getSelectedAnswers();
+            let score = 0;
+
+            answers.forEach((answer, index) => {
+                if (answer === quizData[index].answer) {
+                    score++;
+                }
+            });
+
+            resultContainer.innerText = `You scored ${score} out of ${quizData.length}`;
+        }
+
+        submitButton.addEventListener('click', showResult);
+
+        loadQuiz();
+    </script>
+</body>
+</html>
