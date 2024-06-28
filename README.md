@@ -4,7 +4,7 @@
 Hello! This site contains materials for the 5-week AI Crash Course (Design, Develop, and Deploy AI Apps) taught at AI Academy Vancouver by [Issam Laradji](https://github.com/IssamLaradji).
 
 ## How to Approach This Course
-Complete the weekly assignments, share your work and ask the questions on our Discord channel to get the most out of this course.
+Complete the weekly assignments, and on Discord share your work by summarizing your experience with the assignments in say 1-2 paragraphs every Friday and ask any questions that come up to get the most out of this course.
 
 | Date   | Related Material | Assignments |
 |--------|------------------|-------------|
