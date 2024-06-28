@@ -1,1 +1,23 @@
-
+{
+    "info": {
+        "title": "Quwwwiz Information",
+        "description": "This quiz tests your knowledge on various topics. Read each question carefully and select the best answer. Good luck!"
+    },
+    "questions": [
+        {
+            "question": "What is the capital of France?",
+            "choices": ["Berlin", "Madrid", "Paris", "Lisbon"],
+            "answer": "Paris"
+        },
+        {
+            "question": "Who wrote 'To Kill a Mockingbird'?",
+            "choices": ["Harper Lee", "J.K. Rowling", "Ernest Hemingway", "Mark Twain"],
+            "answer": "Harper Lee"
+        },
+        {
+            "question": "What is the smallest planet in our solar system?",
+            "choices": ["Venus", "Earth", "Mars", "Mercury"],
+            "answer": "Mercury"
+        }
+    ]
+}
