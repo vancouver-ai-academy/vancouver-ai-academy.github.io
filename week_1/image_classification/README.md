@@ -1,6 +1,6 @@
 ## Implement an Image Classifier
 
-Update `main.py` by filling up the code placeholders under `TODO`. Running the following command
+Update `main.py` by filling up the code placeholders under `TODO` by adding code and replacing the `None` values. Running the following command
 
 ```
 python main.py -e image_classifier
