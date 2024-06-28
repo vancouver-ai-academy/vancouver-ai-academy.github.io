@@ -1,0 +1,108 @@
+{
+    "info": {
+        "title": "AI Crash Course Quiz 1",
+        "description": "This quiz tests your knowledge on various machine learning topics. Read each question carefully and select the best answer. Score 15/20 to pass. Good luck!"
+    },
+    "questions": [
+        {
+            "question": "What is the primary goal of supervised learning?",
+            "choices": ["Clustering data points", "Predicting labels for new data", "Reducing dimensionality", "Identifying anomalies"],
+            "answer": "Predicting labels for new data"
+        },
+        {
+            "question": "Which algorithm is used for classification problems?",
+            "choices": ["K-Means", "Linear Regression", "Decision Tree", "Principal Component Analysis"],
+            "answer": "Decision Tree"
+        },
+        {
+            "question": "What is overfitting?",
+            "choices": ["Model performing well on training data but poorly on new data", "Model performing poorly on both training and new data", "Model with high bias", "Model with low variance"],
+            "answer": "Model performing well on training data but poorly on new data"
+        },
+        {
+            "question": "What is the purpose of the activation function in a neural network?",
+            "choices": ["To introduce non-linearity", "To initialize weights", "To normalize input data", "To reduce overfitting"],
+            "answer": "To introduce non-linearity"
+        },
+        {
+            "question": "What does 'k' represent in the k-Nearest Neighbors algorithm?",
+            "choices": ["Number of features", "Number of nearest neighbors", "Number of data points", "Number of clusters"],
+            "answer": "Number of nearest neighbors"
+        },
+        {
+            "question": "Which metric is commonly used to evaluate classification models?",
+            "choices": ["Mean Squared Error", "R-squared", "F1 Score", "Euclidean Distance"],
+            "answer": "F1 Score"
+        },
+        {
+            "question": "What technique is used to reduce the dimensionality of data?",
+            "choices": ["Decision Trees", "Support Vector Machines", "Principal Component Analysis", "Random Forest"],
+            "answer": "Principal Component Analysis"
+        },
+        {
+            "question": "What is a hyperparameter?",
+            "choices": ["A parameter that is learned from the data", "A parameter that is set before the learning process begins", "A parameter that measures model performance", "A parameter that normalizes data"],
+            "answer": "A parameter that is set before the learning process begins"
+        },
+        {
+            "question": "Which of the following is an unsupervised learning algorithm?",
+            "choices": ["Linear Regression", "Logistic Regression", "K-Means Clustering", "Support Vector Machine"],
+            "answer": "K-Means Clustering"
+        },
+        {
+            "question": "What does 'dropout' refer to in neural networks?",
+            "choices": ["Reducing overfitting by ignoring random neurons", "Stopping the training process early", "Reducing learning rate", "Normalizing input data"],
+            "answer": "Reducing overfitting by ignoring random neurons"
+        },
+        {
+            "question": "What is the purpose of a validation set?",
+            "choices": ["To train the model", "To test the model", "To fine-tune hyperparameters", "To normalize the data"],
+            "answer": "To fine-tune hyperparameters"
+        },
+        {
+            "question": "What is 'gradient descent'?",
+            "choices": ["A clustering algorithm", "A dimensionality reduction technique", "An optimization algorithm to minimize cost function", "A method to initialize weights"],
+            "answer": "An optimization algorithm to minimize cost function"
+        },
+        {
+            "question": "What is 'bagging' in ensemble methods?",
+            "choices": ["Using multiple models to reduce variance", "Using one model to increase variance", "Bagging features to improve accuracy", "Selecting the best model"],
+            "answer": "Using multiple models to reduce variance"
+        },
+        {
+            "question": "Which loss function is commonly used in binary classification?",
+            "choices": ["Mean Squared Error", "Cross-Entropy Loss", "Hinge Loss", "Kullback-Leibler Divergence"],
+            "answer": "Cross-Entropy Loss"
+        },
+        {
+            "question": "What is the role of the 'learning rate' in training neural networks?",
+            "choices": ["To control the step size in updating weights", "To determine the number of hidden layers", "To set the batch size", "To choose the activation function"],
+            "answer": "To control the step size in updating weights"
+        },
+        {
+            "question": "What is 'regularization' in machine learning?",
+            "choices": ["A technique to prevent overfitting", "A method to increase model complexity", "A way to normalize data", "A clustering technique"],
+            "answer": "A technique to prevent overfitting"
+        },
+        {
+            "question": "Which technique can be used to handle imbalanced datasets?",
+            "choices": ["Cross-Validation", "Data Augmentation", "SMOTE (Synthetic Minority Over-sampling Technique)", "Dropout"],
+            "answer": "SMOTE (Synthetic Minority Over-sampling Technique)"
+        },
+        {
+            "question": "What is the purpose of a 'confusion matrix'?",
+            "choices": ["To visualize the performance of a classification model", "To normalize data", "To optimize the model", "To reduce dimensionality"],
+            "answer": "To visualize the performance of a classification model"
+        },
+        {
+            "question": "What is 'reinforcement learning'?",
+            "choices": ["Learning from a supervisor", "Learning from labeled data", "Learning from feedback to maximize reward", "Learning from clustering"],
+            "answer": "Learning from feedback to maximize reward"
+        },
+        {
+            "question": "Which algorithm is best suited for text classification?",
+            "choices": ["K-Means", "Naive Bayes", "Linear Regression", "Principal Component Analysis"],
+            "answer": "Naive Bayes"
+        }
+    ]
+}

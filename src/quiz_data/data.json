@@ -1,0 +1,19 @@
+{
+    "title": "Sample JSON Data",
+    "description": "This is an example of reading JSON data from an external file and displaying it on a webpage.",
+    "items": [
+      {
+        "name": "Item 1",
+        "value": "Value 1"
+      },
+      {
+        "name": "Item 2",
+        "value": "Value 2"
+      },
+      {
+        "name": "Item 3",
+        "value": "Value 3"
+      }
+    ]
+  }
+  
