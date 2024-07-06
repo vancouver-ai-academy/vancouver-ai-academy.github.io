@@ -136,6 +136,6 @@
             "choices": ["To prevent overfitting", "To stabilize and speed up training", "To introduce non-linearity", "To reduce the number of parameters"],
             "answer": "To stabilize and speed up training",
             "justification": "Layer normalization stabilizes the learning process and speeds up training by normalizing the inputs to each layer."
-        },
+        }
     ]
 }
