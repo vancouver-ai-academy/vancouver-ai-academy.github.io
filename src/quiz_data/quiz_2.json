@@ -137,11 +137,5 @@
             "answer": "To stabilize and speed up training",
             "justification": "Layer normalization stabilizes the learning process and speeds up training by normalizing the inputs to each layer."
         },
-        {
-            "question": "Which transformer model variant is designed to handle text-to-text tasks?",
-            "choices": ["BERT", "GPT", "T5", "RoBERTa"],
-            "answer": "T5",
-            "justification": "T5 (Text-to-Text Transfer Transformer) is designed for text-to-text tasks, where both input and output are in text format."
-        }
     ]
 }
