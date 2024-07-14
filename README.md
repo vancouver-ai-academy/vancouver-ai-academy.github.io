@@ -5,7 +5,7 @@ Hello! At VAA, we provide a platform where AI enthusiasts come together to trans
 
 ## Join Our Discord
 
-We do most of our communication here: [discoord](https://discord.gg/Tcsq9AmM)
+We do most of our communication here: [https://discord.gg/Tcsq9AmM](https://discord.gg/Tcsq9AmM)
 
 ## Our Approach
 
