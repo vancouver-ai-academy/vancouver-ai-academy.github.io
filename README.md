@@ -1,6 +1,6 @@
 # Vancouver AI Academy (VAA)
 ## Design, Develop, and Deploy AI Apps with our Collaborative Community
-
+![Banner](src/banner.jpg)
 Hello! At VAA, we provide a platform where AI enthusiasts come together to transform ideas into cutting-edge applications through teamwork and shared expertise, taught by [Issam Laradji](https://www.linkedin.com/in/issam-laradji-67ba1a99/).
 
 ## Join Our Discord
