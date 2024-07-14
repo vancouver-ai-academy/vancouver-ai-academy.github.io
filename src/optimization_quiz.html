@@ -37,6 +37,11 @@
             font-size: 1.2em;
             font-weight: bold;
         }
+        .feedback {
+            margin-top: 10px;
+            font-size: 1em;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -46,17 +51,18 @@
         </div>
         <div class="quiz-container">
             <div id="quiz"></div>
-            <button id="submit">Submit</button>
-            <div id="result" class="result"></div>
+            <div id="score" class="result"></div>
         </div>
     </div>
 
     <script>
         const quizContainer = document.getElementById('quiz');
-        const resultContainer = document.getElementById('result');
-        const submitButton = document.getElementById('submit');
+        const scoreContainer = document.getElementById('score');
         const quizInfoContainer = document.getElementById('quiz-info');
-        
+
+        let totalQuestions = 0;
+        let correctAnswers = 0;
+
         const quizUrl = 'https://raw.githubusercontent.com/academy-ai/academy-ai.github.io/main/src/quiz_data/optimization_quiz.json';
 
         async function fetchQuizData() {
@@ -81,11 +87,12 @@
         }
 
         function loadQuiz(quizData) {
+            totalQuestions = quizData.length;
             quizContainer.innerHTML = '';
             quizData.forEach((q, index) => {
                 const questionElement = document.createElement('div');
                 questionElement.classList.add('question');
-                questionElement.innerText = `${index + 1}. ${q.question}`;
+                questionElement.innerHTML = `<p>${index + 1}. ${q.question}</p>`;
 
                 const choicesElement = document.createElement('ul');
                 choicesElement.classList.add('choices');
@@ -101,45 +108,41 @@
                     choicesElement.appendChild(choiceElement);
                 });
 
+                const submitButton = document.createElement('button');
+                submitButton.innerText = 'Submit Answer';
+                submitButton.onclick = () => submitAnswer(index, q.answer);
+
+                const feedbackElement = document.createElement('div');
+                feedbackElement.id = `feedback${index}`;
+                feedbackElement.classList.add('feedback');
+
                 quizContainer.appendChild(questionElement);
                 quizContainer.appendChild(choicesElement);
+                quizContainer.appendChild(submitButton);
+                quizContainer.appendChild(feedbackElement);
             });
         }
 
-        function getSelectedAnswers(quizData) {
-            const answers = [];
-            quizData.forEach((q, index) => {
-                const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
-                answers.push(selectedOption ? selectedOption.value : null);
-            });
-            return answers;
-        }
-
-        function showResult(quizData) {
-            const answers = getSelectedAnswers(quizData);
-            let score = 0;
-
-            answers.forEach((answer, index) => {
-                if (answer === quizData[index].answer) {
-                    score++;
+        function submitAnswer(questionIndex, correctAnswer) {
+            const selectedOption = document.querySelector(`input[name="question${questionIndex}"]:checked`);
+            const feedbackElement = document.getElementById(`feedback${questionIndex}`);
+            if (selectedOption) {
+                if (selectedOption.value === correctAnswer) {
+                    feedbackElement.innerText = 'Correct!';
+                    correctAnswers++;
+                } else {
+                    feedbackElement.innerText = 'Wrong! The correct answer is ' + correctAnswer;
                 }
-            });
-
-            resultContainer.innerText = `You scored ${score} out of ${quizData.length}`;
-        }
-
-        submitButton.addEventListener('click', async () => {
-            try {
-                const response = await fetch(quizUrl);
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const data = await response.json();
-                showResult(data.questions);
-            } catch (error) {
-                console.error('There was a problem with the fetch operation:', error);
+                updateScore();
+            } else {
+                feedbackElement.innerText = 'Please select an answer.';
             }
-        });
+        }
+
+        function updateScore() {
+            const scorePercentage = ((correctAnswers / totalQuestions) * 100).toFixed(2);
+            scoreContainer.innerText = `Score: ${scorePercentage}% (${correctAnswers} out of ${totalQuestions})`;
+        }
 
         fetchQuizData();
     </script>
