@@ -5,14 +5,13 @@ Hello! At VAA, we provide a platform where AI enthusiasts come together to trans
 
 ## Join Our Discord
 
-We do most of our communication here: https://discord.gg/Tcsq9AmM
+We do most of our communication here: [discoord](https://discord.gg/Tcsq9AmM)
 
 ## Our Approach
 
-We work on different big projects, hold teaching sessions, and organize networking events to support learning and connection.
+We work on different big projects, hold teaching sessions, and organize networking events to support learning and connection. We organize most of our events at [meetup.com](https://www.meetup.com/ai_academy/)
 
 ## Learning Material 
-Complete the weekly assignments, and on Discord share your work by summarizing your experience with the assignments in say 1-2 paragraphs every **Friday** and ask any questions that come up to get the most out of this course.
 
 | Topic   | Reading List | Quizzes |
 |--------|---------------|------------|
