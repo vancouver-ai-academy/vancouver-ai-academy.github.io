@@ -1,141 +1,173 @@
-
 {
     "info": {
-        "title": "AI Crash Course Quiz 2",
-        "description": "This quiz tests your knowledge on Natural Language Processing. Read each question carefully and select the best answer. Score 75% to pass. Good luck!"
+        "title": "Advanced Web Development Quiz",
+        "description": "Test your skills in HTML, CSS, JavaScript, and Flask concepts. Aim for 75% to pass. Best of luck!"
     },
     "questions": [
         {
-            "question": "What is the primary function of a transformer model in NLP?",
-            "choices": ["Text classification", "Sequence-to-sequence modeling", "Image recognition", "Dimensionality reduction"],
-            "answer": "Sequence-to-sequence modeling",
-            "justification": "Transformers are primarily used for tasks where sequence-to-sequence modeling is required, such as translation and text generation."
+            "question": "What is the primary role of the HTML `<head>` element?",
+            "choices": [
+                "To display the main content of a webpage",
+                "To contain metadata and links to resources like stylesheets and scripts",
+                "To provide a navigation menu",
+                "To structure the body content"
+            ],
+            "answer": "To contain metadata and links to resources like stylesheets and scripts",
+            "justification": "The `<head>` element is crucial for including metadata, linking CSS files, JavaScript scripts, and other resources."
         },
         {
-            "question": "Which component in a transformer model is responsible for handling different positions in a sequence?",
-            "choices": ["Attention mechanism", "Positional encoding", "Feed-forward neural network", "Layer normalization"],
-            "answer": "Positional encoding",
-            "justification": "Positional encoding is used to inject information about the positions of the tokens in the sequence."
+            "question": "Which CSS property is used to make a webpage responsive?",
+            "choices": [
+                "position",
+                "media queries",
+                "z-index",
+                "float"
+            ],
+            "answer": "media queries",
+            "justification": "Media queries allow CSS styles to adapt based on screen size, orientation, and other device properties, making designs responsive."
         },
         {
-            "question": "What does 'LLM' stand for in the context of NLP?",
-            "choices": ["Large Language Model", "Low Latency Model", "Linear Language Model", "Language Learning Machine"],
-            "answer": "Large Language Model",
-            "justification": "LLM stands for Large Language Model, which refers to models like GPT-3 and BERT that are trained on large datasets."
+            "question": "What is the purpose of the `async` attribute in a `<script>` tag?",
+            "choices": [
+                "To load the script after all content has loaded",
+                "To load the script simultaneously with other resources",
+                "To delay the script execution until the user interacts",
+                "To preload the script without executing it"
+            ],
+            "answer": "To load the script simultaneously with other resources",
+            "justification": "The `async` attribute allows a script to load in parallel with other resources, improving page load speed."
         },
         {
-            "question": "Which of the following is NOT a characteristic of a transformer model?",
-            "choices": ["Parallel processing of data", "Handling long-range dependencies", "Recurrent connections", "Use of self-attention"],
-            "answer": "Recurrent connections",
-            "justification": "Transformers do not use recurrent connections, which are characteristic of RNNs. Instead, they use self-attention mechanisms."
+            "question": "In Flask, what does the `@app.route` decorator do?",
+            "choices": [
+                "Defines a route or URL endpoint for a view function",
+                "Handles database connections",
+                "Defines a static file",
+                "Creates a new Flask application instance"
+            ],
+            "answer": "Defines a route or URL endpoint for a view function",
+            "justification": "The `@app.route` decorator maps a URL to a specific view function, allowing Flask to handle requests to that URL."
         },
         {
-            "question": "What is the key innovation of the self-attention mechanism in transformers?",
-            "choices": ["Capturing local dependencies", "Capturing global dependencies", "Reducing computational complexity", "Improving model interpretability"],
-            "answer": "Capturing global dependencies",
-            "justification": "Self-attention allows transformers to capture dependencies between all tokens in the sequence, regardless of their distance."
+            "question": "Which JavaScript method is used to select an element by its class name?",
+            "choices": [
+                "document.getElementById",
+                "document.querySelector",
+                "document.getElementsByClassName",
+                "document.selectClass"
+            ],
+            "answer": "document.getElementsByClassName",
+            "justification": "The `getElementsByClassName` method selects elements with a specific class name."
         },
         {
-            "question": "In transformers, what is the purpose of the encoder-decoder architecture?",
-            "choices": ["Text generation", "Machine translation", "Image recognition", "Speech recognition"],
-            "answer": "Machine translation",
-            "justification": "The encoder-decoder architecture is designed for tasks like machine translation where an input sequence is mapped to an output sequence."
+            "question": "What is the default HTTP method used by a Flask form submission?",
+            "choices": [
+                "GET",
+                "POST",
+                "PUT",
+                "DELETE"
+            ],
+            "answer": "GET",
+            "justification": "By default, forms use the GET method unless specified otherwise in the `method` attribute."
         },
         {
-            "question": "What type of data is primarily used to train LLMs?",
-            "choices": ["Labeled datasets", "Unlabeled text corpora", "Image datasets", "Audio datasets"],
-            "answer": "Unlabeled text corpora",
-            "justification": "Large language models are typically trained on large amounts of unlabeled text data to learn the statistical properties of language."
+            "question": "What does the CSS `z-index` property control?",
+            "choices": [
+                "The position of an element relative to its container",
+                "The stacking order of overlapping elements",
+                "The transparency of an element",
+                "The width of an element"
+            ],
+            "answer": "The stacking order of overlapping elements",
+            "justification": "The `z-index` property specifies the stack order of elements, determining which elements appear on top."
         },
         {
-            "question": "Which transformer variant is known for its use in generative tasks?",
-            "choices": ["BERT", "GPT", "T5", "XLNet"],
-            "answer": "GPT",
-            "justification": "GPT (Generative Pre-trained Transformer) is designed for generative tasks such as text generation."
+            "question": "What is the role of the Flask `render_template` function?",
+            "choices": [
+                "To execute a database query",
+                "To serve static files",
+                "To render HTML templates with dynamic data",
+                "To handle HTTP redirects"
+            ],
+            "answer": "To render HTML templates with dynamic data",
+            "justification": "`render_template` is used to render HTML files and pass dynamic data from Python to the templates."
         },
         {
-            "question": "What does 'BERT' stand for?",
-            "choices": ["Bidirectional Encoder Representations from Transformers", "Basic Encoder Representations from Transformers", "Bidirectional Entity Recognition Transformer", "Basic Entity Recognition Transformer"],
-            "answer": "Bidirectional Encoder Representations from Transformers",
-            "justification": "BERT stands for Bidirectional Encoder Representations from Transformers, highlighting its ability to consider context from both directions."
+            "question": "What is the purpose of the `position: absolute` CSS property?",
+            "choices": [
+                "To position an element relative to its closest positioned ancestor",
+                "To center an element on the page",
+                "To make an element float next to text",
+                "To align elements in a flexbox container"
+            ],
+            "answer": "To position an element relative to its closest positioned ancestor",
+            "justification": "`position: absolute` positions an element based on the nearest ancestor with a position other than static."
         },
         {
-            "question": "How do transformers handle different token positions in sequences?",
-            "choices": ["By using recurrent connections", "Through positional encoding", "By adding noise to inputs", "Through dropout layers"],
-            "answer": "Through positional encoding",
-            "justification": "Positional encoding is added to input embeddings to give transformers a sense of the order of tokens in the sequence."
+            "question": "Which Flask function is used to handle 404 errors?",
+            "choices": [
+                "app.error_404",
+                "render_template",
+                "app.errorhandler",
+                "abort"
+            ],
+            "answer": "app.errorhandler",
+            "justification": "The `@app.errorhandler` decorator defines custom responses for HTTP error codes, including 404."
         },
         {
-            "question": "Which technique is commonly used in transformers to prevent overfitting?",
-            "choices": ["Dropout", "Batch normalization", "Weight decay", "Learning rate annealing"],
-            "answer": "Dropout",
-            "justification": "Dropout is a regularization technique used in transformers to prevent overfitting by randomly setting some neurons to zero during training."
+            "question": "What does the CSS `flex` property define in a flex container?",
+            "choices": [
+                "The spacing between elements",
+                "The order of items",
+                "The growth, shrinkage, and base size of an item",
+                "The alignment of items along the main axis"
+            ],
+            "answer": "The growth, shrinkage, and base size of an item",
+            "justification": "The `flex` property is shorthand for setting `flex-grow`, `flex-shrink`, and `flex-basis`."
         },
         {
-            "question": "What is the main advantage of transformer models over RNNs?",
-            "choices": ["Better handling of long-range dependencies", "Lower computational requirements", "Simpler architecture", "Better at handling image data"],
-            "answer": "Better handling of long-range dependencies",
-            "justification": "Transformers can handle long-range dependencies more effectively than RNNs due to their self-attention mechanism."
+            "question": "Which JavaScript method stops an event from propagating to parent elements?",
+            "choices": [
+                "event.preventDefault",
+                "event.stopPropagation",
+                "event.stopDefault",
+                "event.cancelBubble"
+            ],
+            "answer": "event.stopPropagation",
+            "justification": "`stopPropagation` prevents the event from bubbling up to parent elements."
         },
         {
-            "question": "In the context of transformers, what is 'self-attention'?",
-            "choices": ["Mechanism for capturing relationships between different positions in a sequence", "Method for regularizing the model", "Technique for reducing model complexity", "Process for data augmentation"],
-            "answer": "Mechanism for capturing relationships between different positions in a sequence",
-            "justification": "Self-attention allows the model to weigh the importance of different tokens in a sequence when making predictions."
+            "question": "What is the purpose of Flask's `url_for` function?",
+            "choices": [
+                "To generate URLs for static files",
+                "To create dynamic URLs for view functions",
+                "To handle URL redirections",
+                "To validate URL syntax"
+            ],
+            "answer": "To create dynamic URLs for view functions",
+            "justification": "`url_for` generates URLs dynamically based on view function names and arguments, ensuring maintainability."
         },
         {
-            "question": "What is the purpose of 'masked language modeling' in BERT?",
-            "choices": ["Predicting missing words in a sentence", "Translating text from one language to another", "Classifying text into categories", "Generating new text from a prompt"],
-            "answer": "Predicting missing words in a sentence",
-            "justification": "Masked language modeling involves predicting missing words in a sentence, which helps BERT learn bidirectional representations."
+            "question": "Which HTML element is used to include JavaScript code directly on a webpage?",
+            "choices": [
+                "<link>",
+                "<style>",
+                "<script>",
+                "<javascript>"
+            ],
+            "answer": "<script>",
+            "justification": "The `<script>` element is used to include or link JavaScript code."
         },
         {
-            "question": "Which model introduced the concept of 'transformers'?",
-            "choices": ["GPT-2", "BERT", "AlexNet", "Attention Is All You Need"],
-            "answer": "Attention Is All You Need",
-            "justification": "The paper 'Attention Is All You Need' introduced the transformer model, revolutionizing NLP with its self-attention mechanism."
-        },
-        {
-            "question": "What is a common application of transformer models?",
-            "choices": ["Image classification", "Time series forecasting", "Text summarization", "Anomaly detection"],
-            "answer": "Text summarization",
-            "justification": "Transformers are commonly used for text summarization, where they generate concise summaries of longer texts."
-        },
-        {
-            "question": "How do transformers process input data compared to RNNs?",
-            "choices": ["Sequentially", "In parallel", "By segmenting inputs", "Through convolutional layers"],
-            "answer": "In parallel",
-            "justification": "Transformers process input data in parallel, unlike RNNs which process data sequentially. This allows for faster training."
-        },
-        {
-            "question": "Which of the following models is an example of a large language model (LLM)?",
-            "choices": ["ResNet", "VGGNet", "GPT-3", "LeNet"],
-            "answer": "GPT-3",
-            "justification": "GPT-3 is an example of a large language model, known for its ability to generate human-like text."
-        },
-        {
-            "question": "What is the significance of the 'attention mechanism' in transformers?",
-            "choices": ["It allows the model to focus on relevant parts of the input", "It reduces the number of parameters in the model", "It improves the efficiency of data processing", "It introduces non-linearity in the model"],
-            "answer": "It allows the model to focus on relevant parts of the input",
-            "justification": "The attention mechanism enables the model to focus on the most relevant parts of the input, enhancing its understanding and predictions."
-        },
-        {
-            "question": "Which layer in the transformer architecture is responsible for transforming the input embeddings?",
-            "choices": ["Encoder", "Decoder", "Feed-forward neural network", "Attention layer"],
-            "answer": "Feed-forward neural network",
-            "justification": "The feed-forward neural network layer in transformers transforms the input embeddings and processes the encoded representations."
-        },
-        {
-            "question": "Which optimization algorithm is commonly used to train transformers?",
-            "choices": ["SGD", "Adam", "RMSprop", "Adagrad"],
-            "answer": "Adam",
-            "justification": "Adam is commonly used to train transformers due to its efficiency and effectiveness in handling sparse gradients."
-        },
-        {
-            "question": "What is the purpose of layer normalization in transformer models?",
-            "choices": ["To prevent overfitting", "To stabilize and speed up training", "To introduce non-linearity", "To reduce the number of parameters"],
-            "answer": "To stabilize and speed up training",
-            "justification": "Layer normalization stabilizes the learning process and speeds up training by normalizing the inputs to each layer."
+            "question": "How do you specify a route parameter in Flask?",
+            "choices": [
+                "Using square brackets in the URL",
+                "Using curly braces in the URL",
+                "Using angle brackets in the URL",
+                "Using parentheses in the URL"
+            ],
+            "answer": "Using angle brackets in the URL",
+            "justification": "Flask uses angle brackets to define dynamic route parameters, e.g., `/user/<username>`."
         }
     ]
 }
