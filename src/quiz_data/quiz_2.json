@@ -1,173 +1,118 @@
 {
     "info": {
-        "title": "Advanced Web Development Quiz",
-        "description": "Test your skills in HTML, CSS, JavaScript, and Flask concepts. Aim for 75% to pass. Best of luck!"
+        "title": "Prompt Engineering Principles Quiz",
+        "description": "This quiz tests your knowledge of prompt engineering principles, including techniques like chain of thought, instruction clarity, and handling ambiguous prompts. Score 75% to pass. Good luck!"
     },
     "questions": [
         {
-            "question": "What is the primary role of the HTML `<head>` element?",
+            "question": "What is the 'chain of thought' technique in prompt engineering?",
             "choices": [
-                "To display the main content of a webpage",
-                "To contain metadata and links to resources like stylesheets and scripts",
-                "To provide a navigation menu",
-                "To structure the body content"
+                "A method for generating creative writing",
+                "A step-by-step reasoning process to break down complex problems",
+                "Using random thoughts to inspire answers",
+                "A way to improve formatting of generated responses"
             ],
-            "answer": "To contain metadata and links to resources like stylesheets and scripts",
-            "justification": "The `<head>` element is crucial for including metadata, linking CSS files, JavaScript scripts, and other resources."
+            "answer": "A step-by-step reasoning process to break down complex problems",
+            "justification": "The chain of thought technique involves guiding the AI through a logical sequence of steps to ensure accurate and detailed responses."
         },
         {
-            "question": "Which CSS property is used to make a webpage responsive?",
+            "question": "Why is specifying the output format important in prompt engineering?",
             "choices": [
-                "position",
-                "media queries",
-                "z-index",
-                "float"
+                "It makes the output visually appealing",
+                "It ensures the AI generates responses in the desired structure or style",
+                "It limits the AI's ability to be creative",
+                "It speeds up response time"
             ],
-            "answer": "media queries",
-            "justification": "Media queries allow CSS styles to adapt based on screen size, orientation, and other device properties, making designs responsive."
+            "answer": "It ensures the AI generates responses in the desired structure or style",
+            "justification": "Specifying the format guides the AI, reducing ambiguity and aligning outputs with user expectations."
         },
         {
-            "question": "What is the purpose of the `async` attribute in a `<script>` tag?",
+            "question": "What should you do if an AI's response to a prompt is ambiguous?",
             "choices": [
-                "To load the script after all content has loaded",
-                "To load the script simultaneously with other resources",
-                "To delay the script execution until the user interacts",
-                "To preload the script without executing it"
+                "Write a new prompt with clearer instructions",
+                "Ask the AI to clarify itself without rephrasing",
+                "Reduce the number of constraints in the prompt",
+                "Avoid using the AI for that type of task"
             ],
-            "answer": "To load the script simultaneously with other resources",
-            "justification": "The `async` attribute allows a script to load in parallel with other resources, improving page load speed."
+            "answer": "Write a new prompt with clearer instructions",
+            "justification": "Rephrasing the prompt to be clearer and more specific helps the AI generate a more accurate and less ambiguous response."
         },
         {
-            "question": "In Flask, what does the `@app.route` decorator do?",
+            "question": "What does 'temperature' control in an AI's response generation?",
             "choices": [
-                "Defines a route or URL endpoint for a view function",
-                "Handles database connections",
-                "Defines a static file",
-                "Creates a new Flask application instance"
+                "The length of the response",
+                "The randomness or creativity of the response",
+                "The tone of the response",
+                "The level of formality in the output"
             ],
-            "answer": "Defines a route or URL endpoint for a view function",
-            "justification": "The `@app.route` decorator maps a URL to a specific view function, allowing Flask to handle requests to that URL."
+            "answer": "The randomness or creativity of the response",
+            "justification": "A lower temperature results in more deterministic and predictable outputs, while a higher temperature introduces more randomness."
         },
         {
-            "question": "Which JavaScript method is used to select an element by its class name?",
+            "question": "How can you encourage an AI to provide detailed explanations in its answers?",
             "choices": [
-                "document.getElementById",
-                "document.querySelector",
-                "document.getElementsByClassName",
-                "document.selectClass"
+                "Ask for the shortest answer possible",
+                "Include 'explain your reasoning' in the prompt",
+                "Avoid specifying the output format",
+                "Use ambiguous phrasing"
             ],
-            "answer": "document.getElementsByClassName",
-            "justification": "The `getElementsByClassName` method selects elements with a specific class name."
+            "answer": "Include 'explain your reasoning' in the prompt",
+            "justification": "Directly asking the AI to explain its reasoning prompts it to provide a more thorough and detailed response."
         },
         {
-            "question": "What is the default HTTP method used by a Flask form submission?",
+            "question": "Why is it important to include examples in your prompt?",
             "choices": [
-                "GET",
-                "POST",
-                "PUT",
-                "DELETE"
+                "To provide context and guide the AI’s response",
+                "To speed up the AI's response time",
+                "To test the AI’s understanding",
+                "To make the prompt shorter"
             ],
-            "answer": "GET",
-            "justification": "By default, forms use the GET method unless specified otherwise in the `method` attribute."
+            "answer": "To provide context and guide the AI’s response",
+            "justification": "Examples clarify expectations and give the AI a reference point for the type of output you want."
         },
         {
-            "question": "What does the CSS `z-index` property control?",
+            "question": "What is one way to improve an AI’s performance on tasks requiring reasoning?",
             "choices": [
-                "The position of an element relative to its container",
-                "The stacking order of overlapping elements",
-                "The transparency of an element",
-                "The width of an element"
+                "Increase the temperature to maximum",
+                "Use multi-step prompts or chain-of-thought reasoning",
+                "Avoid specifying constraints in the prompt",
+                "Provide very brief instructions"
             ],
-            "answer": "The stacking order of overlapping elements",
-            "justification": "The `z-index` property specifies the stack order of elements, determining which elements appear on top."
+            "answer": "Use multi-step prompts or chain-of-thought reasoning",
+            "justification": "Breaking down tasks into smaller steps helps the AI follow logical reasoning and reduces errors."
         },
         {
-            "question": "What is the role of the Flask `render_template` function?",
+            "question": "What is the purpose of setting constraints in a prompt?",
             "choices": [
-                "To execute a database query",
-                "To serve static files",
-                "To render HTML templates with dynamic data",
-                "To handle HTTP redirects"
+                "To limit the AI's functionality",
+                "To help the AI focus on specific tasks or outputs",
+                "To make the task more complex",
+                "To ensure the AI generates longer responses"
             ],
-            "answer": "To render HTML templates with dynamic data",
-            "justification": "`render_template` is used to render HTML files and pass dynamic data from Python to the templates."
+            "answer": "To help the AI focus on specific tasks or outputs",
+            "justification": "Constraints narrow down the scope of the response, ensuring more relevant and targeted outputs."
         },
         {
-            "question": "What is the purpose of the `position: absolute` CSS property?",
+            "question": "Why might you use a multi-turn dialogue approach in prompt engineering?",
             "choices": [
-                "To position an element relative to its closest positioned ancestor",
-                "To center an element on the page",
-                "To make an element float next to text",
-                "To align elements in a flexbox container"
+                "To simulate a human conversation",
+                "To allow the AI to refine its responses over time",
+                "To reduce the complexity of tasks",
+                "To test the AI's creativity"
             ],
-            "answer": "To position an element relative to its closest positioned ancestor",
-            "justification": "`position: absolute` positions an element based on the nearest ancestor with a position other than static."
+            "answer": "To allow the AI to refine its responses over time",
+            "justification": "Multi-turn dialogues enable iterative refinement, leading to more accurate and contextually aware responses."
         },
         {
-            "question": "Which Flask function is used to handle 404 errors?",
+            "question": "What is a common sign that your prompt needs improvement?",
             "choices": [
-                "app.error_404",
-                "render_template",
-                "app.errorhandler",
-                "abort"
+                "The AI provides overly generic or irrelevant answers",
+                "The AI generates responses quickly",
+                "The AI gives detailed and accurate responses",
+                "The AI follows the prompt exactly as written"
             ],
-            "answer": "app.errorhandler",
-            "justification": "The `@app.errorhandler` decorator defines custom responses for HTTP error codes, including 404."
-        },
-        {
-            "question": "What does the CSS `flex` property define in a flex container?",
-            "choices": [
-                "The spacing between elements",
-                "The order of items",
-                "The growth, shrinkage, and base size of an item",
-                "The alignment of items along the main axis"
-            ],
-            "answer": "The growth, shrinkage, and base size of an item",
-            "justification": "The `flex` property is shorthand for setting `flex-grow`, `flex-shrink`, and `flex-basis`."
-        },
-        {
-            "question": "Which JavaScript method stops an event from propagating to parent elements?",
-            "choices": [
-                "event.preventDefault",
-                "event.stopPropagation",
-                "event.stopDefault",
-                "event.cancelBubble"
-            ],
-            "answer": "event.stopPropagation",
-            "justification": "`stopPropagation` prevents the event from bubbling up to parent elements."
-        },
-        {
-            "question": "What is the purpose of Flask's `url_for` function?",
-            "choices": [
-                "To generate URLs for static files",
-                "To create dynamic URLs for view functions",
-                "To handle URL redirections",
-                "To validate URL syntax"
-            ],
-            "answer": "To create dynamic URLs for view functions",
-            "justification": "`url_for` generates URLs dynamically based on view function names and arguments, ensuring maintainability."
-        },
-        {
-            "question": "Which HTML element is used to include JavaScript code directly on a webpage?",
-            "choices": [
-                "<link>",
-                "<style>",
-                "<script>",
-                "<javascript>"
-            ],
-            "answer": "<script>",
-            "justification": "The `<script>` element is used to include or link JavaScript code."
-        },
-        {
-            "question": "How do you specify a route parameter in Flask?",
-            "choices": [
-                "Using square brackets in the URL",
-                "Using curly braces in the URL",
-                "Using angle brackets in the URL",
-                "Using parentheses in the URL"
-            ],
-            "answer": "Using angle brackets in the URL",
-            "justification": "Flask uses angle brackets to define dynamic route parameters, e.g., `/user/<username>`."
+            "answer": "The AI provides overly generic or irrelevant answers",
+            "justification": "If responses are generic or irrelevant, it indicates that the prompt lacks clarity or specificity, requiring improvement."
         }
     ]
 }
