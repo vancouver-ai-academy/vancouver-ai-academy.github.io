@@ -46,6 +46,11 @@
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             text-align: center;
+            display: none;
+        }
+
+        .question-container.active {
+            display: block;
         }
 
         .question {
@@ -164,6 +169,60 @@
                 font-size: 2em;
             }
         }
+
+        .progress-bars {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-correct {
+            background-color: #28a745;
+        }
+
+        .progress-incorrect {
+            background-color: #dc3545;
+        }
+
+        .progress-label {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .concept-content {
+            text-align: left;
+            line-height: 1.6;
+            color: #2c3e50;
+            margin-bottom: 25px;
+        }
+
+        .concept-content p {
+            margin-bottom: 15px;
+        }
+
+        .concept-content h2 {
+            font-size: 1.4em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -181,7 +240,17 @@
                 <!-- Questions will be dynamically inserted here -->
             </div>
             
-            <div id="score">Score: 0.00% (0 out of 15)</div>
+            <div class="progress-bars">
+                <div class="progress-label">Correct Answers: <span id="correct-count">0</span> of 15</div>
+                <div class="progress-bar">
+                    <div id="correct-progress" class="progress-fill progress-correct" style="width: 0%"></div>
+                </div>
+                <div class="progress-label">Incorrect Answers: <span id="incorrect-count">0</span> of 15</div>
+                <div class="progress-bar">
+                    <div id="incorrect-progress" class="progress-fill progress-incorrect" style="width: 0%"></div>
+                </div>
+                <div class="progress-label">Questions Remaining: <span id="remaining-count">15</span></div>
+            </div>
             <button id="submit-button">Submit Quiz</button>
         </div>
     </div>
@@ -201,6 +270,14 @@
             },
             "questions": [
                 {
+                    "type": "concept",
+                    "content": {
+                        "heading": "Christmas: Ancient to Modern Evolution",
+                        "paragraph1": "Christmas celebrations have evolved significantly over the centuries, blending religious observances with cultural traditions from around the world. The modern Christmas combines ancient winter solstice festivities, Christian celebrations of Christ's birth, and various cultural practices that emerged during the Victorian era.",
+                        "paragraph2": "The commercialization of Christmas began in the 19th century, with the rise of gift-giving traditions and the creation of modern Christmas icons. Department stores, greeting card companies, and advertising played crucial roles in shaping many of the Christmas traditions we know today."
+                    }
+                },
+                {
                     "question": "In which modern-day country was Saint Nicholas born?",
                     "choices": ["Greece", "Turkey", "Italy", "Spain"],
                     "answer": "Turkey",
@@ -213,6 +290,14 @@
                     "justification": "While Coca-Cola didn't create Santa Claus, they were the first to use the modern image of Santa in their advertisements starting in 1931, with artist Haddon Sundblom creating the iconic look we know today."
                 },
                 {
+                    "type": "concept",
+                    "content": {
+                        "heading": "Santa: From Saint to Symbol",
+                        "paragraph1": "The figure of Santa Claus has a fascinating evolution, from the historical Saint Nicholas to the modern jolly gift-giver. Saint Nicholas's reputation for secret gift-giving became part of Dutch traditions, where he was known as Sinterklaas.",
+                        "paragraph2": "The transformation into the modern Santa Claus involved influences from various cultures and significant contributions from 19th-century American writers and artists, who helped establish the narrative of the North Pole workshop, flying reindeer, and Christmas Eve deliveries."
+                    }
+                },
+                {
                     "question": "What was the first artificial Christmas tree made from?",
                     "choices": ["Plastic", "Goose Feathers", "Paper", "Metal"],
                     "answer": "Goose Feathers",
@@ -223,6 +308,14 @@
                     "choices": ["1818", "1823", "1843", "1850"],
                     "answer": "1818",
                     "justification": "Silent Night (Stille Nacht) was first performed on Christmas Eve 1818 in Oberndorf, Austria. The lyrics were written by Father Joseph Mohr, and the melody was composed by Franz Xaver Gruber."
+                },
+                {
+                    "type": "concept",
+                    "content": {
+                        "heading": "Christmas Music Through The Ages",
+                        "paragraph1": "Christmas music has been an integral part of holiday celebrations for centuries. From ancient religious hymns to modern pop songs, the genre has continuously evolved while maintaining its festive spirit.",
+                        "paragraph2": "Many of our most beloved Christmas carols originated in the Victorian era, when there was a revival of Christmas traditions. This period saw the creation of both religious and secular holiday music that continues to be popular today."
+                    }
                 },
                 {
                     "question": "What is the best-selling Christmas song of all time?",
@@ -303,23 +396,35 @@
             data.questions.forEach((question, index) => {
                 const questionDiv = document.createElement('div');
                 questionDiv.className = 'question-container';
+                if (index === 0) questionDiv.classList.add('active');
                 
-                questionDiv.innerHTML = `
-                    <div class="question">${index + 1}. ${question.question}</div>
-                    <div class="choices">
-                        ${question.choices.map((choice, choiceIndex) => `
-                            <label class="choice-label">
-                                <input type="radio" name="q${index}" value="${choice}">
-                                <span>${choice}</span>
-                            </label>
-                        `).join('')}
-                    </div>
-                    <button class="submit-answer-btn" onclick="submitAnswer(${index})">Submit Answer</button>
-                    <div id="feedback-${index}" class="feedback">
-                        <div id="result-${index}"></div>
-                        <div id="justification-${index}" class="justification"></div>
-                    </div>
-                `;
+                if (question.type === 'concept') {
+                    questionDiv.innerHTML = `
+                        <div class="concept-content">
+                            <h2>${question.content.heading}</h2>
+                            <p>${question.content.paragraph1}</p>
+                            <p>${question.content.paragraph2}</p>
+                        </div>
+                        <button class="submit-answer-btn" onclick="nextQuestion(${index})">Continue</button>
+                    `;
+                } else {
+                    questionDiv.innerHTML = `
+                        <div class="question">${index}. ${question.question}</div>
+                        <div class="choices">
+                            ${question.choices.map((choice, choiceIndex) => `
+                                <label class="choice-label">
+                                    <input type="radio" name="q${index}" value="${choice}">
+                                    <span>${choice}</span>
+                                </label>
+                            `).join('')}
+                        </div>
+                        <button class="submit-answer-btn" onclick="submitAnswer(${index})">Submit Answer</button>
+                        <div id="feedback-${index}" class="feedback">
+                            <div id="result-${index}"></div>
+                            <div id="justification-${index}" class="justification"></div>
+                        </div>
+                    `;
+                }
                 
                 quizContainer.appendChild(questionDiv);
             });
@@ -357,35 +462,64 @@
 
             // Update the overall score
             updateScore();
+
+            // Scroll to the feedback section instead of the next question
+            feedbackDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            // Show next question (without scrolling)
+            const nextQuestion = document.querySelector(`.question-container:nth-child(${questionIndex + 2})`);
+            if (nextQuestion) {
+                nextQuestion.classList.add('active');
+            }
         }
 
         function updateScore() {
             let correctAnswers = 0;
-            const totalQuestions = quizData.questions.length;
+            let incorrectAnswers = 0;
+            const totalQuestions = quizData.questions.filter(q => q.type !== 'concept').length;
             
             quizData.questions.forEach((question, index) => {
+                // Skip concept cards
+                if (question.type === 'concept') return;
+                
                 const feedbackDiv = document.getElementById(`feedback-${index}`);
-                if (feedbackDiv.classList.contains('correct')) {
+                if (feedbackDiv && feedbackDiv.classList.contains('correct')) {
                     correctAnswers++;
+                } else if (feedbackDiv && feedbackDiv.style.display === 'block') {
+                    incorrectAnswers++;
                 }
             });
 
-            const percentage = ((correctAnswers / totalQuestions) * 100).toFixed(2);
-            const scoreDisplay = document.getElementById('score');
-            scoreDisplay.textContent = `Score: ${percentage}% (${correctAnswers} out of ${totalQuestions})`;
+            // Update progress bars and counts
+            const correctProgress = document.getElementById('correct-progress');
+            const incorrectProgress = document.getElementById('incorrect-progress');
+            const correctCount = document.getElementById('correct-count');
+            const incorrectCount = document.getElementById('incorrect-count');
+            const remainingCount = document.getElementById('remaining-count');
             
-            // Color coding for score
-            if (percentage >= 70) {
-                scoreDisplay.style.color = 'green';
-            } else if (percentage >= 50) {
-                scoreDisplay.style.color = 'orange';
-            } else {
-                scoreDisplay.style.color = 'red';
-            }
+            correctProgress.style.width = `${(correctAnswers / totalQuestions) * 100}%`;
+            incorrectProgress.style.width = `${(incorrectAnswers / totalQuestions) * 100}%`;
+            
+            correctCount.textContent = correctAnswers;
+            incorrectCount.textContent = incorrectAnswers;
+            remainingCount.textContent = totalQuestions - (correctAnswers + incorrectAnswers);
         }
 
         // Remove or modify the original submit button handler since we're now handling individual submissions
         document.getElementById('submit-button').style.display = 'none';
+
+        // Add this new function to handle the concept card navigation
+        function nextQuestion(index) {
+            const nextQuestion = document.querySelector(`.question-container:nth-child(${index + 2})`);
+            
+            if (nextQuestion) {
+                // Show next question
+                nextQuestion.classList.add('active');
+                
+                // Scroll to the next question smoothly
+                nextQuestion.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
     </script>
 </body>
 </html>
