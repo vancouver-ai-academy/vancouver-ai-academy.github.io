@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Choice Quiz</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .quiz-title {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .quiz-title h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .quiz-title p {
+            font-size: 1.1em;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .question-container {
+            background-color: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .question {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 25px;
+            color: #2c3e50;
+            line-height: 1.4;
+        }
+
+        .choices {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .choice-label {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            width: 80%;
+            max-width: 400px;
+            background-color: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .choice-label:hover {
+            background-color: #e9ecef;
+            transform: translateY(-2px);
+        }
+
+        .choice-label input[type="radio"] {
+            margin-right: 12px;
+        }
+
+        .submit-answer-btn {
+            padding: 10px 25px;
+            font-size: 1.1em;
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 15px auto;
+        }
+
+        .submit-answer-btn:hover {
+            background-color: #34495e;
+        }
+
+        .submit-answer-btn:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+        }
+
+        .feedback {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            display: none;
+        }
+
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .justification {
+            margin-top: 15px;
+            font-style: italic;
+            color: #666;
+            line-height: 1.5;
+            padding: 0 20px;
+        }
+
+        #score {
+            text-align: center;
+            font-size: 1.4em;
+            font-weight: bold;
+            margin: 30px 0;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .quiz-container {
+                padding: 10px;
+            }
+
+            .question-container {
+                padding: 20px;
+            }
+
+            .choice-label {
+                width: 90%;
+            }
+
+            .quiz-title h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-side" id="quiz-info">
+            <!-- Quiz information will be loaded here -->
+        </div>
+        <div class="quiz-container">
+            <div class="quiz-title">
+                <h1>Data Analytics Quiz</h1>
+                <p>Test your knowledge about data analytics concepts, tools, and best practices! Each question will challenge your understanding of data analysis fundamentals.</p>
+            </div>
+            
+            <div id="quiz">
+                <!-- Questions will be dynamically inserted here -->
+            </div>
+            
+            <div id="score">Score: 0.00% (0 out of 15)</div>
+            <button id="submit-button">Submit Quiz</button>
+        </div>
+    </div>
+
+    <script>
+        const quizContainer = document.getElementById('quiz');
+        const scoreContainer = document.getElementById('score');
+        const quizInfoContainer = document.getElementById('quiz-info');
+
+        let totalQuestions = 0;
+        let correctAnswers = 0;
+
+        const quizData = {
+            "info": {
+                "title": "Data Analytics Quiz",
+                "description": "Test your knowledge about data analytics concepts, tools, and best practices! Each question will challenge your understanding of data analysis fundamentals."
+            },
+            "questions": [
+                {
+                    "question": "What is the primary purpose of exploratory data analysis (EDA)?",
+                    "choices": [
+                        "To build predictive models",
+                        "To summarize and visualize data characteristics",
+                        "To clean data errors",
+                        "To create database schemas"
+                    ],
+                    "answer": "To summarize and visualize data characteristics",
+                    "justification": "Exploratory Data Analysis (EDA) is primarily used to understand data patterns, spot anomalies, test hypotheses, and check assumptions through summary statistics and visualizations."
+                },
+                {
+                    "question": "Which of these is NOT a common type of data visualization?",
+                    "choices": [
+                        "Box Plot",
+                        "Data Compression Plot",
+                        "Scatter Plot",
+                        "Heat Map"
+                    ],
+                    "answer": "Data Compression Plot",
+                    "justification": "While Box Plots, Scatter Plots, and Heat Maps are common visualization types, 'Data Compression Plot' is not a standard visualization technique in data analytics."
+                },
+                {
+                    "question": "What does SQL stand for?",
+                    "choices": [
+                        "Structured Query Language",
+                        "Simple Question Language",
+                        "System Quality Language",
+                        "Sequential Query Logic"
+                    ],
+                    "answer": "Structured Query Language",
+                    "justification": "SQL stands for Structured Query Language, which is a standard language for managing and manipulating relational databases."
+                },
+                {
+                    "question": "Which measure of central tendency is least affected by outliers?",
+                    "choices": [
+                        "Mean",
+                        "Median",
+                        "Mode",
+                        "Range"
+                    ],
+                    "answer": "Median",
+                    "justification": "The median is the most robust measure of central tendency when it comes to outliers, as it's not affected by extreme values in the way that the mean is."
+                },
+                {
+                    "question": "What is the purpose of A/B testing?",
+                    "choices": [
+                        "To debug code",
+                        "To compare two versions of something to determine which performs better",
+                        "To analyze big data",
+                        "To clean datasets"
+                    ],
+                    "answer": "To compare two versions of something to determine which performs better",
+                    "justification": "A/B testing is a controlled experiment where two variants are compared to determine which one performs better for a given objective."
+                },
+                {
+                    "question": "Which of these is a supervised learning technique?",
+                    "choices": [
+                        "K-means clustering",
+                        "Linear Regression",
+                        "Principal Component Analysis",
+                        "Association Rules"
+                    ],
+                    "answer": "Linear Regression",
+                    "justification": "Linear Regression is a supervised learning technique because it uses labeled data to predict a known output variable."
+                },
+                {
+                    "question": "What is the purpose of data normalization?",
+                    "choices": [
+                        "To remove duplicates",
+                        "To scale features to a similar range",
+                        "To handle missing values",
+                        "To create backup copies"
+                    ],
+                    "answer": "To scale features to a similar range",
+                    "justification": "Data normalization is the process of scaling numeric variables to a similar range, typically between 0 and 1, to ensure all features contribute equally to the analysis."
+                },
+                {
+                    "question": "Which tool is primarily used for creating interactive dashboards?",
+                    "choices": [
+                        "SQL",
+                        "Python",
+                        "Tableau",
+                        "Excel"
+                    ],
+                    "answer": "Tableau",
+                    "justification": "While all listed tools can be used for data analysis, Tableau is specifically designed for creating interactive data visualizations and dashboards."
+                },
+                {
+                    "question": "What does CRUD stand for in database operations?",
+                    "choices": [
+                        "Create, Read, Update, Delete",
+                        "Compare, Reduce, Unify, Display",
+                        "Control, Regulate, Utilize, Design",
+                        "Compile, Run, Update, Debug"
+                    ],
+                    "answer": "Create, Read, Update, Delete",
+                    "justification": "CRUD represents the four basic operations that can be performed on database data: Create, Read, Update, and Delete."
+                },
+                {
+                    "question": "What is a key characteristic of Big Data?",
+                    "choices": [
+                        "It's always structured",
+                        "It's always stored in SQL databases",
+                        "It's characterized by high volume, velocity, and variety",
+                        "It's only numerical data"
+                    ],
+                    "answer": "It's characterized by high volume, velocity, and variety",
+                    "justification": "Big Data is typically characterized by the three V's: Volume (large amounts), Velocity (high speed of generation), and Variety (different types of data)."
+                },
+                {
+                    "question": "What is the purpose of a correlation coefficient?",
+                    "choices": [
+                        "To predict future values",
+                        "To measure the strength of relationship between variables",
+                        "To clean data",
+                        "To create visualizations"
+                    ],
+                    "answer": "To measure the strength of relationship between variables",
+                    "justification": "A correlation coefficient measures the strength and direction of the relationship between two variables, ranging from -1 to +1."
+                },
+                {
+                    "question": "Which of these is NOT a common data quality issue?",
+                    "choices": [
+                        "Missing values",
+                        "Duplicate records",
+                        "Perfect accuracy",
+                        "Inconsistent formatting"
+                    ],
+                    "answer": "Perfect accuracy",
+                    "justification": "Perfect accuracy is not a data quality issue; rather, missing values, duplicates, and inconsistent formatting are common data quality problems that need to be addressed."
+                },
+                {
+                    "question": "What is the primary purpose of data warehousing?",
+                    "choices": [
+                        "Real-time data processing",
+                        "Data backup",
+                        "Historical data analysis and reporting",
+                        "Data collection"
+                    ],
+                    "answer": "Historical data analysis and reporting",
+                    "justification": "Data warehouses are designed to store large amounts of historical data in a format optimized for analysis and reporting purposes."
+                },
+                {
+                    "question": "What is a key difference between JSON and CSV formats?",
+                    "choices": [
+                        "JSON can handle nested data structures, CSV cannot",
+                        "CSV is newer than JSON",
+                        "JSON can only store numbers",
+                        "CSV can only store text"
+                    ],
+                    "answer": "JSON can handle nested data structures, CSV cannot",
+                    "justification": "JSON (JavaScript Object Notation) can represent complex, nested data structures, while CSV (Comma-Separated Values) is limited to flat, tabular data."
+                },
+                {
+                    "question": "What is the purpose of cross-validation in machine learning?",
+                    "choices": [
+                        "To clean the data",
+                        "To evaluate model performance more reliably",
+                        "To visualize results",
+                        "To speed up calculations"
+                    ],
+                    "answer": "To evaluate model performance more reliably",
+                    "justification": "Cross-validation is used to assess how well a model will generalize to new, unseen data by testing it on multiple subsets of the available data."
+                }
+            ]
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            displayQuiz(quizData);
+        });
+
+        function displayQuiz(data) {
+            const quizContainer = document.getElementById('quiz');
+            
+            data.questions.forEach((question, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question-container';
+                
+                questionDiv.innerHTML = `
+                    <div class="question">${index + 1}. ${question.question}</div>
+                    <div class="choices">
+                        ${question.choices.map((choice, choiceIndex) => `
+                            <label class="choice-label">
+                                <input type="radio" name="q${index}" value="${choice}">
+                                <span>${choice}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                    <button class="submit-answer-btn" onclick="submitAnswer(${index})">Submit Answer</button>
+                    <div id="feedback-${index}" class="feedback">
+                        <div id="result-${index}"></div>
+                        <div id="justification-${index}" class="justification"></div>
+                    </div>
+                `;
+                
+                quizContainer.appendChild(questionDiv);
+            });
+        }
+
+        function submitAnswer(questionIndex) {
+            const selectedAnswer = document.querySelector(`input[name="q${questionIndex}"]:checked`);
+            const feedbackDiv = document.getElementById(`feedback-${questionIndex}`);
+            const resultDiv = document.getElementById(`result-${questionIndex}`);
+            const justificationDiv = document.getElementById(`justification-${questionIndex}`);
+            const submitButton = feedbackDiv.previousElementSibling;
+
+            if (!selectedAnswer) {
+                alert('Please select an answer first!');
+                return;
+            }
+
+            const question = quizData.questions[questionIndex];
+            const isCorrect = selectedAnswer.value === question.answer;
+
+            feedbackDiv.style.display = 'block';
+            feedbackDiv.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+            
+            resultDiv.textContent = isCorrect ? 
+                '✓ Correct!' : 
+                `✗ Incorrect. The correct answer is: ${question.answer}`;
+            
+            justificationDiv.textContent = question.justification;
+
+            // Disable the submit button and radio buttons after submission
+            submitButton.disabled = true;
+            document.querySelectorAll(`input[name="q${questionIndex}"]`).forEach(input => {
+                input.disabled = true;
+            });
+
+            // Update the overall score
+            updateScore();
+        }
+
+        function updateScore() {
+            let correctAnswers = 0;
+            const totalQuestions = quizData.questions.length;
+            
+            quizData.questions.forEach((question, index) => {
+                const feedbackDiv = document.getElementById(`feedback-${index}`);
+                if (feedbackDiv.classList.contains('correct')) {
+                    correctAnswers++;
+                }
+            });
+
+            const percentage = ((correctAnswers / totalQuestions) * 100).toFixed(2);
+            const scoreDisplay = document.getElementById('score');
+            scoreDisplay.textContent = `Score: ${percentage}% (${correctAnswers} out of ${totalQuestions})`;
+            
+            // Color coding for score
+            if (percentage >= 70) {
+                scoreDisplay.style.color = 'green';
+            } else if (percentage >= 50) {
+                scoreDisplay.style.color = 'orange';
+            } else {
+                scoreDisplay.style.color = 'red';
+            }
+        }
+
+        // Remove or modify the original submit button handler since we're now handling individual submissions
+        document.getElementById('submit-button').style.display = 'none';
+    </script>
+</body>
+</html>
