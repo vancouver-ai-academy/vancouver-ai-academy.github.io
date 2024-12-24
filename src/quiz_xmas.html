@@ -8,14 +8,19 @@
         body {
             margin: 0;
             padding: 20px;
-            background-color: #f5f5f5;
+            background: linear-gradient(135deg, #1a4855 0%, #243b55 100%);
+            min-height: 100vh;
             font-family: Arial, sans-serif;
+            color: #333;
         }
 
         .quiz-container {
             max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+            margin: 40px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         .quiz-title {
@@ -23,7 +28,18 @@
             color: #2c3e50;
             margin-bottom: 40px;
             padding-bottom: 20px;
-            border-bottom: 2px solid #eee;
+            border-bottom: 3px solid #e8e8e8;
+            position: relative;
+        }
+
+        .quiz-title::after {
+            font-size: 2em;
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 0 20px;
         }
 
         .quiz-title h1 {
@@ -47,10 +63,17 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             text-align: center;
             display: none;
+            border: 1px solid #eaeaea;
+            transition: all 0.3s ease;
         }
 
         .question-container.active {
             display: block;
+        }
+
+        .question-container:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         .question {
@@ -75,16 +98,19 @@
             padding: 12px 20px;
             width: 80%;
             max-width: 400px;
-            background-color: #f8f9fa;
-            border: 2px solid #e9ecef;
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            border: 1px solid #e0e0e0;
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         .choice-label:hover {
-            background-color: #e9ecef;
+            background: linear-gradient(145deg, #f0f0f0, #e8e8e8);
             transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
         .choice-label input[type="radio"] {
@@ -92,19 +118,23 @@
         }
 
         .submit-answer-btn {
-            padding: 10px 25px;
-            font-size: 1.1em;
-            background-color: #2c3e50;
+            background: linear-gradient(145deg, #2c3e50, #34495e);
+            padding: 12px 30px;
+            border-radius: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            font-weight: 600;
+            letter-spacing: 0.5px;
             color: white;
             border: none;
-            border-radius: 6px;
             cursor: pointer;
             transition: background-color 0.3s;
             margin: 15px auto;
         }
 
         .submit-answer-btn:hover {
-            background-color: #34495e;
+            background: linear-gradient(145deg, #34495e, #2c3e50);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
         }
 
         .submit-answer-btn:disabled {
@@ -113,11 +143,12 @@
         }
 
         .feedback {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 8px;
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 12px;
             text-align: center;
             display: none;
+            animation: fadeIn 0.5s ease;
         }
 
         .correct {
@@ -171,33 +202,38 @@
         }
 
         .progress-bars {
+            background: linear-gradient(145deg, #ffffff, #f8f8f8);
+            border: 1px solid #eaeaea;
+            padding: 20px;
             margin: 20px 0;
-            padding: 15px;
-            background-color: white;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         .progress-bar {
-            width: 100%;
-            height: 20px;
-            background-color: #f0f0f0;
-            border-radius: 10px;
-            margin: 10px 0;
-            overflow: hidden;
+            height: 12px;
+            border-radius: 6px;
+            background: #f0f0f0;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+            position: relative;
+            margin-bottom: 15px;
         }
 
         .progress-fill {
+            position: absolute;
+            left: 0;
+            top: 0;
             height: 100%;
-            transition: width 0.3s ease;
+            border-radius: 6px;
+            transition: width 0.5s ease;
         }
 
         .progress-correct {
-            background-color: #28a745;
+            background: linear-gradient(90deg, #28a745, #20c997);
         }
 
         .progress-incorrect {
-            background-color: #dc3545;
+            background: linear-gradient(90deg, #dc3545, #e74c3c);
         }
 
         .progress-label {
@@ -211,6 +247,10 @@
             line-height: 1.6;
             color: #2c3e50;
             margin-bottom: 25px;
+            padding: 25px;
+            background: linear-gradient(145deg, #ffffff, #f8f8f8);
+            border-radius: 15px;
+            border: 1px solid #eaeaea;
         }
 
         .concept-content p {
@@ -218,10 +258,28 @@
         }
 
         .concept-content h2 {
-            font-size: 1.4em;
+            font-size: 1.6em;
             color: #2c3e50;
-            margin-bottom: 15px;
-            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .concept-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #2c3e50, #34495e);
+            border-radius: 2px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -241,6 +299,10 @@
             </div>
             
             <div class="progress-bars">
+                <div class="progress-label" style="font-size: 1.2em; font-weight: bold; margin-bottom: 15px;">
+                    Score: <span id="score-percentage">0</span>% | 
+                    Remaining: <span id="remaining-count">15</span> Questions
+                </div>
                 <div class="progress-label">Correct Answers: <span id="correct-count">0</span> of 15</div>
                 <div class="progress-bar">
                     <div id="correct-progress" class="progress-fill progress-correct" style="width: 0%"></div>
@@ -249,7 +311,6 @@
                 <div class="progress-bar">
                     <div id="incorrect-progress" class="progress-fill progress-incorrect" style="width: 0%"></div>
                 </div>
-                <div class="progress-label">Questions Remaining: <span id="remaining-count">15</span></div>
             </div>
             <button id="submit-button">Submit Quiz</button>
         </div>
@@ -489,6 +550,10 @@
                     incorrectAnswers++;
                 }
             });
+
+            // Calculate and update score percentage
+            const scorePercentage = Math.round((correctAnswers / totalQuestions) * 100) || 0;
+            document.getElementById('score-percentage').textContent = scorePercentage;
 
             // Update progress bars and counts
             const correctProgress = document.getElementById('correct-progress');
