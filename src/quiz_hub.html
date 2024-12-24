@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Choice Quiz</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .quiz-title {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .quiz-title h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .quiz-title p {
+            font-size: 1.1em;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .question-container {
+            background-color: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .question {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 25px;
+            color: #2c3e50;
+            line-height: 1.4;
+        }
+
+        .choices {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .choice-label {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            width: 80%;
+            max-width: 400px;
+            background-color: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .choice-label:hover {
+            background-color: #e9ecef;
+            transform: translateY(-2px);
+        }
+
+        .choice-label input[type="radio"] {
+            margin-right: 12px;
+        }
+
+        .submit-answer-btn {
+            padding: 10px 25px;
+            font-size: 1.1em;
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 15px auto;
+        }
+
+        .submit-answer-btn:hover {
+            background-color: #34495e;
+        }
+
+        .submit-answer-btn:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+        }
+
+        .feedback {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            display: none;
+        }
+
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .justification {
+            margin-top: 15px;
+            font-style: italic;
+            color: #666;
+            line-height: 1.5;
+            padding: 0 20px;
+        }
+
+        #score {
+            text-align: center;
+            font-size: 1.4em;
+            font-weight: bold;
+            margin: 30px 0;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .quiz-container {
+                padding: 10px;
+            }
+
+            .question-container {
+                padding: 20px;
+            }
+
+            .choice-label {
+                width: 90%;
+            }
+
+            .quiz-title h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-side" id="quiz-info">
+            <!-- Quiz information will be loaded here -->
+        </div>
+        <div class="quiz-container">
+            <div class="quiz-title">
+                <h1>Christmas Trivia Quiz</h1>
+                <p>Test your knowledge about Christmas traditions, history, and pop culture! Each question will challenge your festive knowledge. Good luck!</p>
+            </div>
+            
+            <div id="quiz">
+                <!-- Questions will be dynamically inserted here -->
+            </div>
+            
+            <div id="score">Score: 0.00% (0 out of 15)</div>
+            <button id="submit-button">Submit Quiz</button>
+        </div>
+    </div>
+
+    <script>
+        const quizContainer = document.getElementById('quiz');
+        const scoreContainer = document.getElementById('score');
+        const quizInfoContainer = document.getElementById('quiz-info');
+
+        let totalQuestions = 0;
+        let correctAnswers = 0;
+
+        const quizData = {
+            "info": {
+                "title": "Christmas Trivia Quiz",
+                "description": "Test your knowledge about Christmas traditions, history, and pop culture! Each question will challenge your festive knowledge. Good luck!"
+            },
+            "questions": [
+                {
+                    "question": "In which modern-day country was Saint Nicholas born?",
+                    "choices": ["Greece", "Turkey", "Italy", "Spain"],
+                    "answer": "Turkey",
+                    "justification": "Saint Nicholas was born in Patara, a city in ancient Lycia, in what is now modern-day Turkey. He lived in the 3rd-4th century AD and was known for his generosity and gift-giving."
+                },
+                {
+                    "question": "Which company was the first to use Santa Claus in advertising?",
+                    "choices": ["Campbell's Soup", "Coca-Cola", "Pepsi", "Macy's"],
+                    "answer": "Coca-Cola",
+                    "justification": "While Coca-Cola didn't create Santa Claus, they were the first to use the modern image of Santa in their advertisements starting in 1931, with artist Haddon Sundblom creating the iconic look we know today."
+                },
+                {
+                    "question": "What was the first artificial Christmas tree made from?",
+                    "choices": ["Plastic", "Goose Feathers", "Paper", "Metal"],
+                    "answer": "Goose Feathers",
+                    "justification": "The first artificial Christmas trees were developed in Germany in the 19th century and were made using dyed goose feathers attached to wire branches, created as a solution to combat deforestation."
+                },
+                {
+                    "question": "In which year was 'Silent Night' first performed?",
+                    "choices": ["1818", "1823", "1843", "1850"],
+                    "answer": "1818",
+                    "justification": "Silent Night (Stille Nacht) was first performed on Christmas Eve 1818 in Oberndorf, Austria. The lyrics were written by Father Joseph Mohr, and the melody was composed by Franz Xaver Gruber."
+                },
+                {
+                    "question": "What is the best-selling Christmas song of all time?",
+                    "choices": ["White Christmas", "Last Christmas", "All I Want for Christmas Is You", "Jingle Bells"],
+                    "answer": "White Christmas",
+                    "justification": "Bing Crosby's version of 'White Christmas' is the best-selling single of all time, with over 50 million copies sold worldwide. The song was written by Irving Berlin and first released in 1942."
+                },
+                {
+                    "question": "Which country started the tradition of putting up Christmas trees?",
+                    "choices": ["USA", "England", "Germany", "France"],
+                    "answer": "Germany",
+                    "justification": "The Christmas tree tradition began in 16th century Germany, when devout Christians brought decorated trees into their homes. The practice was popularized in England by Queen Victoria and Prince Albert in the 1840s."
+                },
+                {
+                    "question": "What is 'Boxing Day'?",
+                    "choices": ["A day for boxing matches", "The day to box up decorations", "A day to give boxes of gifts to the poor", "A day for returning gifts"],
+                    "answer": "A day to give boxes of gifts to the poor",
+                    "justification": "Boxing Day, celebrated on December 26th, traditionally was when servants and workers would receive Christmas boxes from their employers. The tradition began in Britain and is now celebrated in many Commonwealth countries."
+                },
+                {
+                    "question": "Which of Santa's reindeer is named after weather phenomenon?",
+                    "choices": ["Dasher", "Comet", "Donner and Blitzen", "Vixen"],
+                    "answer": "Donner and Blitzen",
+                    "justification": "Donner and Blitzen mean 'thunder and lightning' in German. These names were originally Dunder and Blixem (Dutch for thunder and lightning) in the 1823 poem 'A Visit from St. Nicholas' but were later germanized."
+                },
+                {
+                    "question": "What Christmas decoration was originally made from strands of silver?",
+                    "choices": ["Tinsel", "Baubles", "Star", "Wreath"],
+                    "answer": "Tinsel",
+                    "justification": "Tinsel was originally made from real silver strands and was created in Germany in the early 1600s. The silver would be hammered until paper-thin and cut into strips to reflect candlelight on the tree."
+                },
+                {
+                    "question": "What is traditionally hidden inside a Christmas pudding?",
+                    "choices": ["A penny", "A ring", "A thimble", "All of the above"],
+                    "answer": "All of the above",
+                    "justification": "Traditionally, several small trinkets were hidden in the pudding, each with a special meaning: the coin for wealth, ring for marriage, and thimble for good fortune. This Victorian-era tradition continues in some families today."
+                },
+                {
+                    "question": "Which country is credited with creating the Advent calendar?",
+                    "choices": ["Italy", "Germany", "Sweden", "England"],
+                    "answer": "Germany",
+                    "justification": "The first printed Advent calendar was created by Gerhard Lang in Germany in the early 1900s. However, the tradition of counting down to Christmas began in Germany in the mid-19th century, with people marking chalk lines on doors or lighting candles."
+                },
+                {
+                    "question": "What is Frankincense?",
+                    "choices": ["A precious stone", "A resin used as incense", "A rare metal", "A type of wine"],
+                    "answer": "A resin used as incense",
+                    "justification": "Frankincense is an aromatic resin harvested from Boswellia trees, used for incense and perfumes. It was one of the three gifts brought to baby Jesus by the Wise Men and was considered as valuable as gold in ancient times."
+                },
+                {
+                    "question": "When was Christmas first celebrated on December 25th?",
+                    "choices": ["0 AD", "336 AD", "1000 AD", "25 AD"],
+                    "answer": "336 AD",
+                    "justification": "The first recorded Christmas celebration on December 25th was in Rome in 336 AD, during the time of Emperor Constantine. This date was likely chosen to coincide with pagan festivals celebrating the winter solstice."
+                },
+                {
+                    "question": "Which country has a tradition of eating KFC for Christmas dinner?",
+                    "choices": ["China", "South Korea", "Japan", "Thailand"],
+                    "answer": "Japan",
+                    "justification": "Since 1974, eating KFC for Christmas has become a popular tradition in Japan. This began after a highly successful marketing campaign called 'Kentucky for Christmas!' The tradition is so popular that orders must be placed months in advance."
+                },
+                {
+                    "question": "What was the original color of Santa's suit?",
+                    "choices": ["Red", "Green", "Brown", "Blue"],
+                    "answer": "Green",
+                    "justification": "Before the red suit became standard, Santa was often depicted wearing green, which represented the coming spring. The modern red-suited Santa became popular through 19th-century political cartoons and later Coca-Cola advertisements."
+                }
+            ]
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            displayQuiz(quizData);
+        });
+
+        function displayQuiz(data) {
+            const quizContainer = document.getElementById('quiz');
+            
+            data.questions.forEach((question, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question-container';
+                
+                questionDiv.innerHTML = `
+                    <div class="question">${index + 1}. ${question.question}</div>
+                    <div class="choices">
+                        ${question.choices.map((choice, choiceIndex) => `
+                            <label class="choice-label">
+                                <input type="radio" name="q${index}" value="${choice}">
+                                <span>${choice}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                    <button class="submit-answer-btn" onclick="submitAnswer(${index})">Submit Answer</button>
+                    <div id="feedback-${index}" class="feedback">
+                        <div id="result-${index}"></div>
+                        <div id="justification-${index}" class="justification"></div>
+                    </div>
+                `;
+                
+                quizContainer.appendChild(questionDiv);
+            });
+        }
+
+        function submitAnswer(questionIndex) {
+            const selectedAnswer = document.querySelector(`input[name="q${questionIndex}"]:checked`);
+            const feedbackDiv = document.getElementById(`feedback-${questionIndex}`);
+            const resultDiv = document.getElementById(`result-${questionIndex}`);
+            const justificationDiv = document.getElementById(`justification-${questionIndex}`);
+            const submitButton = feedbackDiv.previousElementSibling;
+
+            if (!selectedAnswer) {
+                alert('Please select an answer first!');
+                return;
+            }
+
+            const question = quizData.questions[questionIndex];
+            const isCorrect = selectedAnswer.value === question.answer;
+
+            feedbackDiv.style.display = 'block';
+            feedbackDiv.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+            
+            resultDiv.textContent = isCorrect ? 
+                '✓ Correct!' : 
+                `✗ Incorrect. The correct answer is: ${question.answer}`;
+            
+            justificationDiv.textContent = question.justification;
+
+            // Disable the submit button and radio buttons after submission
+            submitButton.disabled = true;
+            document.querySelectorAll(`input[name="q${questionIndex}"]`).forEach(input => {
+                input.disabled = true;
+            });
+
+            // Update the overall score
+            updateScore();
+        }
+
+        function updateScore() {
+            let correctAnswers = 0;
+            const totalQuestions = quizData.questions.length;
+            
+            quizData.questions.forEach((question, index) => {
+                const feedbackDiv = document.getElementById(`feedback-${index}`);
+                if (feedbackDiv.classList.contains('correct')) {
+                    correctAnswers++;
+                }
+            });
+
+            const percentage = ((correctAnswers / totalQuestions) * 100).toFixed(2);
+            const scoreDisplay = document.getElementById('score');
+            scoreDisplay.textContent = `Score: ${percentage}% (${correctAnswers} out of ${totalQuestions})`;
+            
+            // Color coding for score
+            if (percentage >= 70) {
+                scoreDisplay.style.color = 'green';
+            } else if (percentage >= 50) {
+                scoreDisplay.style.color = 'orange';
+            } else {
+                scoreDisplay.style.color = 'red';
+            }
+        }
+
+        // Remove or modify the original submit button handler since we're now handling individual submissions
+        document.getElementById('submit-button').style.display = 'none';
+    </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+{
+    "info": {
+        "title": "Christmas Trivia Quiz",
+        "description": "Test your knowledge about Christmas traditions, history, and pop culture! Each question will challenge your festive knowledge. Good luck!"
+    },
+    "questions": [
+        {
+            "question": "In which modern-day country was Saint Nicholas born?",
+            "choices": ["Greece", "Turkey", "Italy", "Spain"],
+            "answer": "Turkey",
+            "justification": "Saint Nicholas was born in Patara, a city in ancient Lycia, in what is now modern-day Turkey."
+        },
+        {
+            "question": "Which company was the first to use Santa Claus in advertising?",
+            "choices": ["Campbell's Soup", "Coca-Cola", "Pepsi", "Macy's"],
+            "answer": "Coca-Cola",
+            "justification": "While Coca-Cola didn't create Santa Claus, they were the first to use the modern image of Santa in their advertisements starting in 1931."
+        },
+        {
+            "question": "What was the first artificial Christmas tree made from?",
+            "choices": ["Plastic", "Goose Feathers", "Paper", "Metal"],
+            "answer": "Goose Feathers",
+            "justification": "The first artificial Christmas trees were developed in Germany in the 19th century and were made using dyed goose feathers."
+        },
+        {
+            "question": "In which year was 'Silent Night' first performed?",
+            "choices": ["1818", "1823", "1843", "1850"],
+            "answer": "1818",
+            "justification": "Silent Night (Stille Nacht) was first performed on Christmas Eve 1818 in Oberndorf, Austria."
+        },
+        {
+            "question": "What is the best-selling Christmas song of all time?",
+            "choices": ["White Christmas", "Last Christmas", "All I Want for Christmas Is You", "Jingle Bells"],
+            "answer": "White Christmas",
+            "justification": "Bing Crosby's 'White Christmas' is the best-selling Christmas song, with over 50 million copies sold worldwide."
+        },
+        {
+            "question": "Which country started the tradition of putting up Christmas trees?",
+            "choices": ["USA", "England", "Germany", "France"],
+            "answer": "Germany",
+            "justification": "The Christmas tree tradition began in 16th century Germany, when devout Christians brought decorated trees into their homes."
+        },
+        {
+            "question": "What is 'Boxing Day'?",
+            "choices": ["A day for boxing matches", "The day to box up decorations", "A day to give boxes of gifts to the poor", "A day for returning gifts"],
+            "answer": "A day to give boxes of gifts to the poor",
+            "justification": "Boxing Day traditionally was when servants and workers would receive Christmas boxes from their employers."
+        },
+        {
+            "question": "Which of Santa's reindeer is named after weather phenomenon?",
+            "choices": ["Dasher", "Comet", "Donner and Blitzen", "Vixen"],
+            "answer": "Donner and Blitzen",
+            "justification": "Donner and Blitzen mean 'thunder and lightning' in German."
+        },
+        {
+            "question": "What Christmas decoration was originally made from strands of silver?",
+            "choices": ["Tinsel", "Baubles", "Star", "Wreath"],
+            "answer": "Tinsel",
+            "justification": "Tinsel was originally made from real silver strands and was created in Germany in the early 1600s."
+        },
+        {
+            "question": "What is traditionally hidden inside a Christmas pudding?",
+            "choices": ["A penny", "A ring", "A thimble", "All of the above"],
+            "answer": "All of the above",
+            "justification": "Traditionally, several small trinkets were hidden in the pudding, each with a special meaning for the finder."
+        },
+        {
+            "question": "Which country is credited with creating the Advent calendar?",
+            "choices": ["Italy", "Germany", "Sweden", "England"],
+            "answer": "Germany",
+            "justification": "The first printed Advent calendar was created by Gerhard Lang in Germany in the early 1900s."
+        },
+        {
+            "question": "What is Frankincense?",
+            "choices": ["A precious stone", "A resin used as incense", "A rare metal", "A type of wine"],
+            "answer": "A resin used as incense",
+            "justification": "Frankincense is an aromatic resin used for incense and perfumes, and was one of the gifts brought to baby Jesus."
+        },
+        {
+            "question": "When was Christmas first celebrated on December 25th?",
+            "choices": ["0 AD", "336 AD", "1000 AD", "25 AD"],
+            "answer": "336 AD",
+            "justification": "The first recorded Christmas celebration on December 25th was in Rome in 336 AD."
+        },
+        {
+            "question": "Which country has a tradition of eating KFC for Christmas dinner?",
+            "choices": ["China", "South Korea", "Japan", "Thailand"],
+            "answer": "Japan",
+            "justification": "Since 1974, eating KFC for Christmas has become a popular tradition in Japan, thanks to a successful marketing campaign."
+        },
+        {
+            "question": "What was the original color of Santa's suit?",
+            "choices": ["Red", "Green", "Brown", "Blue"],
+            "answer": "Green",
+            "justification": "Before the red suit became standard, Santa was often depicted wearing green, which represented the coming spring."
+        }
+    ]
+} 

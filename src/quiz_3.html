@@ -63,7 +63,7 @@
         let totalQuestions = 0;
         let correctAnswers = 0;
 
-        const quizUrl = 'https://raw.githubusercontent.com/academy-ai/academy-ai.github.io/main/src/quiz_data/quiz_3.json';
+        const quizUrl = 'https://raw.githubusercontent.com/academy-ai/academy-ai.github.io/main/src/quiz_data/quiz_2.json';
 
         async function fetchQuizData() {
             try {
@@ -82,7 +82,7 @@
         function loadQuizInfo(info) {
             quizInfoContainer.innerHTML = `
                 <h2>${info.title}</h2>
-                <p>${info.description}</p>
+                <p>${info.description.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>
             `;
         }
 
@@ -92,7 +92,7 @@
             quizData.forEach((q, index) => {
                 const questionElement = document.createElement('div');
                 questionElement.classList.add('question');
-                questionElement.innerHTML = `<p>${index + 1}. ${q.question}</p>`;
+                questionElement.innerHTML = `<p>${index + 1}. ${q.question.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>`;
 
                 const choicesElement = document.createElement('ul');
                 choicesElement.classList.add('choices');
@@ -101,8 +101,8 @@
                     const choiceElement = document.createElement('li');
                     choiceElement.innerHTML = `
                         <label>
-                            <input type="radio" name="question${index}" value="${choice}">
-                            ${choice}
+                            <input type="radio" name="question${index}" value="${choice.replace(/</g, '&lt;').replace(/>/g, '&gt;')}">
+                            ${choice.replace(/</g, '&lt;').replace(/>/g, '&gt;')}
                         </label>
                     `;
                     choicesElement.appendChild(choiceElement);

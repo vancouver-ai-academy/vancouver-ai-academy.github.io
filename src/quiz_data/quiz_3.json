@@ -1,0 +1,118 @@
+{
+    "info": {
+        "title": "Advanced Web Design Principles Quiz",
+        "description": "This quiz tests your understanding of advanced web design principles, including typography, grid systems, visual balance, and accessibility. Score 75% to pass. Good luck!"
+    },
+    "questions": [
+        {
+            "question": "What is the purpose of a grid system in web design?",
+            "choices": [
+                "To create visual structure and alignment",
+                "To increase loading times",
+                "To add decorative elements",
+                "To randomly place elements for creativity"
+            ],
+            "answer": "To create visual structure and alignment",
+            "justification": "Grid systems help organize content and maintain consistent alignment, improving visual structure and usability."
+        },
+        {
+            "question": "What does the term 'typographic hierarchy' refer to?",
+            "choices": [
+                "Using the same font size for all text",
+                "Arranging text elements to show their order of importance",
+                "Using multiple fonts for decorative purposes",
+                "Centering all text on a page"
+            ],
+            "answer": "Arranging text elements to show their order of importance",
+            "justification": "Typographic hierarchy uses font size, weight, and style to guide the reader's focus through the content."
+        },
+        {
+            "question": "Why is color contrast critical for accessibility in web design?",
+            "choices": [
+                "It makes the website more visually appealing",
+                "It ensures text and elements are legible for all users, including those with visual impairments",
+                "It reduces the use of colors on the website",
+                "It highlights secondary content only"
+            ],
+            "answer": "It ensures text and elements are legible for all users, including those with visual impairments",
+            "justification": "Proper color contrast ensures readability and usability, especially for users with low vision or color blindness."
+        },
+        {
+            "question": "What is the 'F-pattern' in web design?",
+            "choices": [
+                "A decorative layout style",
+                "The visual scanning pattern users follow when reading content on a webpage",
+                "A rule for positioning images",
+                "A technique for grid layout creation"
+            ],
+            "answer": "The visual scanning pattern users follow when reading content on a webpage",
+            "justification": "The F-pattern reflects how users typically scan content, focusing first on the top and left portions of the page."
+        },
+        {
+            "question": "Which principle best describes visual rhythm in web design?",
+            "choices": [
+                "Using random placements for content",
+                "Repeating elements to create movement and flow",
+                "Overloading pages with decorative images",
+                "Avoiding negative space to fill gaps"
+            ],
+            "answer": "Repeating elements to create movement and flow",
+            "justification": "Visual rhythm involves repeating elements, like patterns or spacing, to create a sense of flow and movement."
+        },
+        {
+            "question": "What is the primary function of whitespace (negative space) in advanced design?",
+            "choices": [
+                "To make the website look minimal",
+                "To balance design elements and improve user focus",
+                "To fill empty gaps",
+                "To reduce page loading speed"
+            ],
+            "answer": "To balance design elements and improve user focus",
+            "justification": "Whitespace creates breathing room, improves readability, and balances design elements to enhance user focus."
+        },
+        {
+            "question": "Why is responsive typography important in modern web design?",
+            "choices": [
+                "To use larger fonts on all devices",
+                "To adapt font size and layout for different screen sizes",
+                "To focus only on decorative text",
+                "To replace images with text content"
+            ],
+            "answer": "To adapt font size and layout for different screen sizes",
+            "justification": "Responsive typography ensures text remains legible and visually balanced across various devices and screen sizes."
+        },
+        {
+            "question": "How does visual alignment contribute to professional design?",
+            "choices": [
+                "It allows elements to be scattered across the page",
+                "It ensures elements are positioned to create a cohesive, organized layout",
+                "It removes the need for grids",
+                "It highlights content only in the center of the page"
+            ],
+            "answer": "It ensures elements are positioned to create a cohesive, organized layout",
+            "justification": "Proper alignment creates visual harmony and structure, making the design look clean and professional."
+        },
+        {
+            "question": "What does 'scale' refer to in web design?",
+            "choices": [
+                "Using the same size for all elements",
+                "Proportionately sizing elements to create emphasis and hierarchy",
+                "Shrinking all images",
+                "Making all content fit on a single screen"
+            ],
+            "answer": "Proportionately sizing elements to create emphasis and hierarchy",
+            "justification": "Scale uses size to establish importance and guide the user's focus toward key elements."
+        },
+        {
+            "question": "Why is consistency across a website critical for user experience?",
+            "choices": [
+                "It adds variety to every page",
+                "It ensures familiarity and predictability, improving navigation",
+                "It eliminates the need for creative layouts",
+                "It focuses on adding unique fonts on every section"
+            ],
+            "answer": "It ensures familiarity and predictability, improving navigation",
+            "justification": "Consistency helps users feel familiar with the interface, allowing for seamless navigation and a better user experience."
+        }
+    ]
+}

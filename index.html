@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vancouver AI Academy</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212; /* Dark background */
+            color: #e0e0e0; /* Light text color for contrast */
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(74, 13, 13, 0.8); /* D /* Deep blue */
+            color: #e0e0e0;
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-social {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-social h1 {
+            margin: 0;
+            margin-right: 1rem;
+            font-size: 2rem; /* Increased for better visibility */
+            color: #f5f5f5; /* Off-white for contrast */
+        }
+
+        .social-icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .social-icons a {
+            color: #f5f5f5;
+            text-decoration: none;
+            margin-left: 1rem;
+            font-size: 1.6rem; /* Slightly larger icons */
+        }
+
+        .social-icons a:hover {
+            color: #b3b3b3;
+        }
+
+        .nav-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-buttons a {
+            color: #f5f5f5;
+            text-decoration: none;
+            margin-left: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: rgba(26, 35, 126, 0.8); /* Deep blue */
+            border-radius: 5px;
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+
+        .nav-buttons a:hover, .nav-buttons a:focus {
+            background-color: rgba(26, 35, 126, 1);
+        }
+
+        .hero {
+            width: 100%;
+            background-size: cover;
+            color: #f5f5f5;
+            padding: 8rem 2rem; /* Adjust padding for height */
+            position: relative;
+            background: linear-gradient(to bottom, rgba(26, 35, 126, 0.7), rgba(0, 0, 0, 0.5)), url('header.webp');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            text-align: left;
+            padding: 2rem 10rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: #03a9f4; /* Bright cyan */
+            color: #121212;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 1rem;
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+
+        .cta-button:hover, .cta-button:focus {
+            background-color: #0288d1; /* Darker cyan */
+        }
+
+        .content-container {
+            padding: 2rem 1rem; /* Adjust padding for better spacing */
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section {
+            padding: 2rem 1rem; /* Increased padding for sections */
+        }
+
+        .section:nth-of-type(odd) {
+            background-color: #1e1e1e; /* Darker gray */
+        }
+
+        .section:nth-of-type(even) {
+            background-color: #2a2a2a; /* Slightly lighter gray */
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #03a9f4; /* Cyan accent */
+            padding-bottom: 0.5rem;
+        }
+
+        .scrollable-container {
+            display: flex;
+            overflow-x: auto;
+            padding: 1rem 0;
+            gap: 1rem;
+        }
+
+        .scrollable-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .scrollable-container::-webkit-scrollbar-thumb {
+            background: #555;
+            border-radius: 4px;
+        }
+
+        .scrollable-container::-webkit-scrollbar-track {
+            background: #2a2a2a;
+        }
+
+        .item {
+            flex: 0 0 auto;
+            min-width: 300px;
+            background: #333; /* Darker card background */
+            color: #f5f5f5;
+            padding: 1rem;
+            width: 25%;
+            height: 10rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            border: 1px solid #444;
+            transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for interactions */
+        }
+
+        .item:hover {
+            transform: translateY(-5px); /* Subtle lift effect */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+        }
+
+        .footer-container {
+            background-color: #1e1e1e;
+            color: #f5f5f5;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .footer-container a {
+            color: #f5f5f5;
+            text-decoration: none;
+            transition: color 0.3s; /* Smooth color transition */
+        }
+
+        .footer-container a:hover, .footer-container a:focus {
+            color: #03a9f4; /* Cyan accent on hover */
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-social">
+                <h1>Vancouver AI Academy</h1>
+                <div class="social-icons">
+                    <a href="https://github.com/your-github-link" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://discord.gg/your-discord-link" target="_blank"><i class="fab fa-discord"></i></a>
+                    <a href="https://www.instagram.com/your-instagram-link" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <a href="#events">Events</a>
+                <a href="#projects">Current Projects</a>
+                <a href="#courses">Courses</a>
+                <a href="#about">About</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2 style="font-size:3.3rem;margin-bottom: -2.6rem;">COMMUNITY</h2>
+            <h2 style="font-size:3.3rem">BUILDS STRONGER AI LEADERS</h2>
+            <p style="font-size:1.5rem">Connect with others in AI to stay informed and grow.</p>
+            <a href="#join" class="cta-button">Join Now</a>
+        </div>
+    </section>
+
+    <section id="events" class="section">
+        <div class="content-container">
+            <h2>Upcoming Events</h2>
+            <div class="scrollable-container">
+                <div class="item">
+                    <h3>AI Workshop</h3>
+                    <p><strong>Date:</strong> September 10, 2024</p>
+                    <p>Join us for an interactive workshop on AI fundamentals.</p>
+                </div>
+                <div class="item">
+                    <h3>ML Conference</h3>
+                    <p><strong>Date:</strong> October 5, 2024</p>
+                    <p>Explore the latest advancements in machine learning with industry experts.</p>
+                </div>
+                <div class="item">
+                    <h3>Deep Learning Summit</h3>
+                    <p><strong>Date:</strong> November 15, 2024</p>
+                    <p>Participate in discussions and sessions on deep learning technologies.</p>
+                </div>
+                <!-- Add more event cards as needed -->
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="content-container">
+            <h2>Current Projects</h2>
+            <div class="scrollable-container">
+                <div class="item">
+                    <h3>Project Alpha</h3>
+                    <p>A cutting-edge AI project focused on natural language processing.</p>
+                </div>
+                <div class="item">
+                    <h3>Project Beta</h3>
+                    <p>An initiative to develop innovative machine learning models for predictive analysis.</p>
+                </div>
+                <div class="item">
+                    <h3>Project Gamma</h3>
+                    <p>Researching new methods for improving neural network efficiency.</p>
+                </div>
+                <!-- Add more project cards as needed -->
+            </div>
+        </div>
+    </section>
+
+    <section id="courses" class="section">
+        <div class="content-container">
+            <h2>Courses</h2>
+            <p>Explore our range of courses designed to help you master AI and machine learning.</p>
+            <!-- Add course content here -->
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="content-container">
+            <h2>About Us</h2>
+            <p>Learn more about the Vancouver AI Academy and our mission to advance AI knowledge.</p>
+            <!-- Add about content here -->
+        </div>
+    </section>
+
+    <footer class="footer-container">
+        <p>&copy; 2024 Vancouver AI Academy. All rights reserved.</p>
+        <p>Follow us on <a href="https://github.com/your-github-link" target="_blank">GitHub</a>, <a href="https://discord.gg/your-discord-link" target="_blank">Discord</a>, and <a href="https://www.instagram.com/your-instagram-link" target="_blank">Instagram</a>.</p>
+    </footer>
+</body>
+</html>
